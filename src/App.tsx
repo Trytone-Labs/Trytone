@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createHashRouter, Navigate, RouterProvider, useParams } from 'react-router-dom';
 import { ExamRoute } from './exam/ExamRoute';
+import { trackPageViews } from './lib/analytics';
 import { ErrorBoundary } from './shell/ErrorBoundary';
 import { HomePage } from './shell/HomePage';
 import { Layout } from './shell/Layout';
@@ -89,6 +90,8 @@ function App() {
   useEffect(() => {
     void useProfileStore.getState().init();
   }, []);
+  // One Google Analytics page_view per route (see lib/analytics.ts).
+  useEffect(() => trackPageViews(router), [router]);
   return (
     <ErrorBoundary label="TryTone">
       <RouterProvider router={router} />

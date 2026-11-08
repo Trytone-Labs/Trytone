@@ -2,6 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XS6EVQSMVE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // send_page_view: false — the app uses hash routes (/#/aural/...), which
+      // GA would otherwise report as a single "/" page. src/lib/analytics.ts
+      // sends one page_view per route instead, with the route as the path.
+      gtag('config', 'G-XS6EVQSMVE', { send_page_view: false });
+    </script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
